@@ -13,17 +13,6 @@ export interface IChannelOptions {
     streamType?: number
 }
 
-interface User {
-    name: string;
-    email: string;
-    emailIsVerified: boolean;
-    phoneNumber: string;
-    photoUrl: string;
-    uid: string;
-    providerId: string;
-    idToken: string;
-}
-
 export interface FirebasePlugin {
     getId(
         success: (value: string) => void,
@@ -230,11 +219,7 @@ export interface FirebasePlugin {
         error?: (err: string) => void
     ): void
     getCurrentUser(
-        success: (user: User) => void,
-        error?: (err: string) => void
-    ): void
-    reloadCurrentUser(
-        success: (user: User) => void,
+        success: (user: object) => void,
         error?: (err: string) => void
     ): void
     updateUserProfile(
@@ -405,7 +390,4 @@ export interface FirebasePlugin {
         listenerId: string
     ): void
 }
-
-declare global {
-    const FirebasePlugin: FirebasePlugin;
-}
+declare var FirebasePlugin: FirebasePlugin;
